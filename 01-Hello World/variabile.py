@@ -31,11 +31,22 @@
 # venit_saptamanal = nr_de_ore * venit_ora
 # hourly_rate = 10.5
 # nr_of_hours = 40
-""" sadsanabdndksahd """
-strings = 'asdssadhsag'
-strings_1 = "asdssad\"hsag"
+# """ sadsanabdndksahd """
+# strings = 'asdssadhsag'
+# strings_1 = "asdssad\"hsag"
+#
+# hourly_rate = float(input('Introdu\' venit/ora'))
+# nr_of_hours = float(input('Introdu\' nr. ore'))
+# weekly_income = hourly_rate * nr_of_hours
+# print('venit saptamanal = ', weekly_income)
 
-hourly_rate = float(input('Introdu\' venit/ora'))
-nr_of_hours = float(input('Introdu\' nr. ore'))
-weekly_income = hourly_rate * nr_of_hours
-print('venit saptamanal = ', weekly_income)
+# var_1 = 1
+# var_2 = 1
+# # print(var_1 == var_2)
+# print(var_1 != var_2)  # >, <, >=, <=
+
+# and, or, not
+print(2 < 3 or not 5 < 4)
+# var = 'george'
+# print('E' in var)
+
