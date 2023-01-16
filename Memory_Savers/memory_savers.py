@@ -119,13 +119,33 @@ number_list = [x for x in range(20) if x % 2 == 0]
 #     if x % 2 == 0:
 #         number_list.append(x)
 
-print(number_list)
+# print(number_list)
+#
+# number_list_2 = [y for y in range(100) if y % 2 == 0 if y % 5 == 0]
+#
+# print(number_list_2)
+#
+# number_list_3 = ['Par' if var % 2 == 0 else 'Impar' for var in range(10)]
+#
+# print(number_list_3)
 
-number_list_2 = [y for y in range(100) if y % 2 == 0 if y % 5 == 0]
+# lista_noua = [expresie(element) for element in list_veche if conditie]
 
-print(number_list_2)
+"""COMPREHENSION DICTIONARY"""
 
-number_list_3 = ['Par' if var % 2 == 0 else 'Impar' for var in range(10)]
+# square_dict = dict()
+# for num in range(1, 11):
+#     square_dict[num] = num * num
+# print(square_dict)
+#
+# square_dict_comprehension = {x: x * x for x in range(1, 11)}
+# print(square_dict_comprehension)
 
-print(number_list_3)
+# print(isinstance(43, int))
+# print(isinstance(43.3, float))
 
+a = [41, 45]
+b = [1, 41]
+
+print(any(i in a for i in b))
+print(all(i in a for i in b))
