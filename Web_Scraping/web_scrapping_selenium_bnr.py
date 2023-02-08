@@ -40,5 +40,6 @@ for j in body:
     counter += 1
 
 df = pd.DataFrame(body_columns)
-print(df)
-df.to_excel("Curs_BNR_selenium_2.xlsx", header=header, index=0)
+# print(df)
+# df.to_excel("Curs_BNR_selenium_2.xlsx", header=header, index=0)
+df.to_csv('Curs_BNR.csv', header=header)
