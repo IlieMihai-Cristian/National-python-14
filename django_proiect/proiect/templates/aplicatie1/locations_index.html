@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block title %}
+    <a class="btn btn-primary" href="{% url 'locations:adaugare' %}">Adauga inregistrare</a>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Index</th>
+                <th>City</th>
+                <th>Country</th>
+                <th>Active</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in location_list %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ item.city }}</td>
+                    <td>{{ item.country }}</td>
+                    {% if item.active %}
+                        <td>Activ</td>
+                    {% else %}
+                        <td>Inactiv</td>
+                    {% endif %}
+{#                    <td>{{ item.active }}</td>#}
+                    <td>
+                        <a class="btn btn-warning" href="{% url 'locations:modificare' item.id %}">Editare</a>
+                        {% if item.active %}
+                            <a class="btn btn-danger" href="{% url 'locations:stergere' item.id %}">Stergere</a>
+                        {% else %}
+                            <a class="btn btn-info" href="{% url 'locations:activare' item.id %}">Activare</a>
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
