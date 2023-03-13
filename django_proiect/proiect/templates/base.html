@@ -7,8 +7,19 @@
         <div class="container">
             <div class="row>">
                 <nav>
+                    {% if request.user.is_authenticated %}
+                        <span style="color:blue"> Hi, {{ request.user.username|upper }}! </span>
+                    {% endif %}
                     <a class="btn" href="/admin">Admin</a>
-                    <a class="btn" href="{% url 'locations:lista_locatii' %}">Locatii</a>
+                    {% if request.user.is_authenticated %}
+                        <a class="btn" href="{% url 'locations:lista_locatii' %}">Locatii</a>
+                        <a class="btn btn-sm btn-danger" href="{% url 'logout' %}">Logout</a>
+                        {% if ready_to_work %}
+                            <a class="btn btn-sm btn-success" href="{% url 'locations:start_pontaj' %}">Pornire Pontaj</a>
+                        {% else %}
+                            <a class="btn btn-sm btn-danger" href="{% url 'locations:stop_pontaj' %}">Stop Pontaj</a>
+                        {% endif %}
+                    {% endif %}
                 </nav>
             </div>
         </div>
@@ -16,4 +27,10 @@
 
         {% endblock %}
     </body>
+
+    <footer class="footer">
+{#        <div>#}
+            <p style="margin-top: 30%" class="copyright pull-left">© {% now 'Y' %} Scoala Informala de IT</p>
+{#        </div>#}
+    </footer>
 </html>

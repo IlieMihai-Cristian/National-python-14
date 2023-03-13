@@ -1,7 +1,12 @@
+import datetime
+
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.views.generic import ListView, CreateView, UpdateView
 from django.urls import reverse
-from aplicatie1.models import Location
+from aplicatie1.models import Location, Pontaj
 
 
 # CreateView -> adaugarea datelor in baza de date (instante noi)
@@ -10,12 +15,12 @@ from aplicatie1.models import Location
 # UpdateView -> modificarea datelor din baza de date (furnizez pk)
 # DeleteView -> stergerea datelor din baza de date (furnizez pk)
 
-class LocationsView(ListView):
+class LocationsView(LoginRequiredMixin, ListView):
     model = Location
     template_name = 'aplicatie1/locations_index.html'
 
 
-class CreateLocationsView(CreateView):
+class CreateLocationsView(LoginRequiredMixin, CreateView):
     model = Location
     template_name = 'aplicatie1/locations_form.html'
     fields = ['city', 'country']
@@ -24,7 +29,7 @@ class CreateLocationsView(CreateView):
         return reverse('locations:lista_locatii')
 
 
-class UpdateLocationsView(UpdateView):
+class UpdateLocationsView(LoginRequiredMixin, UpdateView):
     model = Location
     fields = ['city', 'country']
     template_name = 'aplicatie1/locations_form.html'
@@ -33,6 +38,7 @@ class UpdateLocationsView(UpdateView):
         return reverse('locations:lista_locatii')
 
 
+@login_required
 def delete_location(request, pk):
     """
     SQL native query: SELECT id, city FROM aplicatie1_location WHERE id=1
@@ -62,6 +68,23 @@ def delete_location(request, pk):
     return redirect('locations:lista_locatii')
 
 
+@login_required
 def activate_location(request, pk):
     Location.objects.filter(id=pk).update(active=True)
     return redirect('locations:lista_locatii')
+
+
+@login_required
+def start_timesheet(request):
+    # new_instance = Pontaj()
+    # new_instance.start_date = datetime.datetime.now()
+    # new_instance.user_id = request.user.id
+    # new_instance.save()
+    Pontaj.objects.create(user_id=request.user.id, start_date=datetime.datetime.now())
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
+
+@login_required
+def stop_timesheet(request):
+    Pontaj.objects.filter(user_id=request.user.id, end_date=None).update(end_date=datetime.datetime.now())
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
