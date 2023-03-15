@@ -48,6 +48,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'proiect.middleware.RefreshMiddleware',
 ]
 
 ROOT_URLCONF = 'proiect.urls'
@@ -105,13 +106,19 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 
+DATE_FORMAT = "d-m-Y"
+
+DATE_INPUT_FORMATS = ('%d-%m-%Y', '%Y-%m-%d')
+
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Bucharest'
 
 USE_I18N = True
 
-USE_TZ = True
+USE_L10N = False
+
+# USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)
