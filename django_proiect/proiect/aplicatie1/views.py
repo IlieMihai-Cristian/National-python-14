@@ -33,6 +33,7 @@ class CreateLocationsView(LoginRequiredMixin, CreateView):
     #     context['gigel'] = Logs.objects.get(id=1)
     #     return context
 
+
 class UpdateLocationsView(LoginRequiredMixin, UpdateView):
     model = Location
     fields = ['city', 'country']
