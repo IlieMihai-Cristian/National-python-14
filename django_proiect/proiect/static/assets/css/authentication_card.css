@@ -1,0 +1,25 @@
+.info_title {
+    text-align: center;
+    margin-top: 40px;
+}
+#card_details {
+    margin-top: 40px;
+    height: 300px;
+    background-color: aqua;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+#label_input {
+    margin-top: 20px;
+}
+#label_input label{
+    display: inline-block;
+    width: 150px;
+    text-align: right;
+}
+#label_input input {
+    width: 70%;
+}
+#submit_email{
+    margin-top: 30px;
+}

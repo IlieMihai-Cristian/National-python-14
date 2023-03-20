@@ -7,6 +7,7 @@
             <label>Password:<input class="form-control" type="password" name="password"></label>
             <button class="btn btn-success" type="submit">Login</button>
             <span style="color: red">{{ form.non_field_errors }}</span>
+            <a href="{% url 'password_reset' %}">Vrei sa iti resetezi parola?</a>
         </div>
     </form>
 {% endblock %}

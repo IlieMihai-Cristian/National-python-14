@@ -6,7 +6,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.views.generic import ListView, CreateView, UpdateView
 from django.urls import reverse
-from aplicatie1.models import Location, Pontaj
+from aplicatie1.models import Location, Pontaj, Logs
 
 
 # CreateView -> adaugarea datelor in baza de date (instante noi)
@@ -28,6 +28,10 @@ class CreateLocationsView(LoginRequiredMixin, CreateView):
     def get_success_url(self):
         return reverse('locations:lista_locatii')
 
+    # def get_context_data(self, **kwargs):
+    #     context = super(CreateLocationsView, self).get_context_data(**kwargs)
+    #     context['gigel'] = Logs.objects.get(id=1)
+    #     return context
 
 class UpdateLocationsView(LoginRequiredMixin, UpdateView):
     model = Location
