@@ -14,3 +14,20 @@ class NewAccountForm(forms.ModelForm):
             'username': TextInput(attrs={'placeholder': 'Username', 'class': 'form-control'}),
             'email': TextInput(attrs={'placeholder': 'Email', 'class': 'form-control'}),
         }
+
+    def __init__(self, *args, **kwargs):
+        super(NewAccountForm, self).__init__(*args, **kwargs)
+        self.fields['email'].required = False
+
+    def clean(self):
+        field_data = self.cleaned_data
+        print(self.data)
+        print(self.fields)
+        print(self.fields['email'])
+        # print(field_data)
+        email_value = field_data.get('email')
+        if User.objects.filter(email=email_value).exists():
+            msg = ''
+            msg = 'Emailul deja exista! te rugam sa adaugi un alt email'
+            self._errors['email'] = self.error_class([msg])
+        return field_data

@@ -1,3 +1,5 @@
+from django.shortcuts import redirect
+
 from aplicatie1.models import Logs
 
 
@@ -8,6 +10,8 @@ class RefreshMiddleware:
 
     def __call__(self, request):
         if request.user.is_authenticated:
+            if request.path == '/':
+                return redirect('logout')
             # print(request.path)
             if request.method == 'GET':
                 new_instance = Logs()

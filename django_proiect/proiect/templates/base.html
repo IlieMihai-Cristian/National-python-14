@@ -8,11 +8,11 @@
         <div class="container">
             <div class="row>">
                 <nav>
-                    {% if request.user.is_authenticated %}
+                    {% if request.user.is_authenticated and request.path != '/' %}
                         <span style="color:blue"> Hi, {{ request.user.username|upper }}! </span>
                     {% endif %}
                     <a class="btn" href="/admin">Admin</a>
-                    {% if request.user.is_authenticated %}
+                    {% if request.user.is_authenticated and request.path != '/' %}
                         <a class="btn" href="{% url 'locations:lista_locatii' %}">Locatii</a>
                         <a class="btn btn-sm btn-danger" href="{% url 'logout' %}">Logout</a>
                         {% if ready_to_work %}

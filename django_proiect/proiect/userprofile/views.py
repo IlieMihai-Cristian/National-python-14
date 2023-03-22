@@ -39,3 +39,7 @@ class CreateNewAccount(LoginRequiredMixin, CreateView):
             email.attach_alternative(msg_html, 'text/html')
             email.send()
         return reverse('locations:lista_locatii')
+
+    def form_invalid(self, form):
+        print(form.errors)
+        return super().form_invalid(form)
