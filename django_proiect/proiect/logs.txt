@@ -1,0 +1,6 @@
+Test Login Page 2023-03-29 21:12:36.706582
+ - Existing page check: True
+ - Password and username check: False
+Test Login Page 2023-03-29 21:13:00.927474
+ - Existing page check: True
+ - Password and username check: True
